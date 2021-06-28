@@ -61,6 +61,9 @@ module Pod
         netrc_path = ENV["COCOAPODS_ART_NETRC_PATH"]
         parameters.concat(["--netrc-file", Pathname.new(netrc_path).expand_path]) if netrc_path
 
+        art_credentials = ENV["COCOAPODS_ART_CREDENTIALS"]
+        parameters.concat(["--user", art_credentials]) if art_credentials
+
         headers.each do |h|
           parameters << '-H'
           parameters << h
